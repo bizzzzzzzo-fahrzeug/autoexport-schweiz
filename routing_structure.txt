@@ -1,0 +1,137 @@
+===============================================================
+  AUTOEXPORT SCHWEIZ — FULL ROUTING STRUCTURE
+  (React Router v6 • SPA • Vite)
+===============================================================
+
+/  (BrowserRouter root)
+│
+├── [AppLayout wrapper]  →  Shared Navbar + Footer
+│   │
+│   ├── /                           →  HomePage.tsx
+│   │
+│   ├── /kontakt                    →  ContactPage.tsx
+│   │
+│   ├── /datenschutz                →  LegalPage.tsx  [datenschutz]
+│   ├── /impressum                  →  LegalPage.tsx  [impressum]
+│   ├── /agb                        →  LegalPage.tsx  [agb]
+│   │    └── (any unknown /:page slug redirects → / )
+│   │
+│   └── /service/:slug              →  ServicePage.tsx
+│        │
+│        │  ── EXPORT CATEGORY ───────────────────────────────
+│        ├── /service/auto-export
+│        ├── /service/auto-export-deutschland
+│        ├── /service/auto-export-afrika
+│        ├── /service/auto-export-osteuropa
+│        │
+│        │  ── ANKAUF CATEGORY ──────────────────────────────
+│        ├── /service/auto-ankauf
+│        ├── /service/gebrauchtwagen-ankauf
+│        ├── /service/luxusauto-ankauf
+│        ├── /service/firmenwagen-ankauf
+│        ├── /service/auto-bewertung
+│        │
+│        │  ── ZUSTAND (CONDITION) CATEGORY ─────────────────
+│        ├── /service/unfallwagen-ankauf
+│        ├── /service/motorschaden-ankauf
+│        ├── /service/getriebeschaden-ankauf
+│        │
+│        │  ── MARKE (BRAND) CATEGORY ──────────────────────
+│        ├── /service/mercedes-export
+│        ├── /service/bmw-export
+│        ├── /service/audi-export
+│        └── /service/vw-export
+│
+├── /admin                          →  AdminPage.tsx  [no layout]
+│
+└── *  (any other path)             →  NotFound.tsx   [404]
+
+===============================================================
+  PAGE SUMMARY
+===============================================================
+
+  Total Routes:      23
+  Layout Routes:     21  (wrapped in AppLayout)
+  Standalone:         2  (admin, 404)
+
+  ┌────────────────────────────┬──────────────────────────────┐
+  │ Route                      │ Component                    │
+  ├────────────────────────────┼──────────────────────────────┤
+  │ /                          │ HomePage.tsx                 │
+  │ /kontakt                   │ ContactPage.tsx              │
+  │ /datenschutz               │ LegalPage.tsx                │
+  │ /impressum                 │ LegalPage.tsx                │
+  │ /agb                       │ LegalPage.tsx                │
+  │ /service/auto-export       │ ServicePage.tsx              │
+  │ /service/auto-ankauf       │ ServicePage.tsx              │
+  │ /service/unfallwagen-ankauf│ ServicePage.tsx              │
+  │ /service/motorschaden-...  │ ServicePage.tsx              │
+  │ /service/getriebeschaden.. │ ServicePage.tsx              │
+  │ /service/gebrauchtwagen-.. │ ServicePage.tsx              │
+  │ /service/luxusauto-ankauf  │ ServicePage.tsx              │
+  │ /service/firmenwagen-ankauf│ ServicePage.tsx              │
+  │ /service/auto-export-de... │ ServicePage.tsx              │
+  │ /service/auto-export-afrika│ ServicePage.tsx              │
+  │ /service/auto-export-ost.. │ ServicePage.tsx              │
+  │ /service/mercedes-export   │ ServicePage.tsx              │
+  │ /service/bmw-export        │ ServicePage.tsx              │
+  │ /service/audi-export       │ ServicePage.tsx              │
+  │ /service/vw-export         │ ServicePage.tsx              │
+  │ /service/auto-bewertung    │ ServicePage.tsx              │
+  │ /admin                     │ AdminPage.tsx                │
+  │ *                          │ NotFound.tsx                 │
+  └────────────────────────────┴──────────────────────────────┘
+
+===============================================================
+  FOR STATIC HTML GENERATION — FILES TO CREATE
+===============================================================
+
+  dist/
+  ├── index.html                        ← /
+  ├── kontakt/
+  │   └── index.html                    ← /kontakt
+  ├── datenschutz/
+  │   └── index.html                    ← /datenschutz
+  ├── impressum/
+  │   └── index.html                    ← /impressum
+  ├── agb/
+  │   └── index.html                    ← /agb
+  ├── admin/
+  │   └── index.html                    ← /admin
+  └── service/
+      ├── auto-export/
+      │   └── index.html
+      ├── auto-ankauf/
+      │   └── index.html
+      ├── unfallwagen-ankauf/
+      │   └── index.html
+      ├── motorschaden-ankauf/
+      │   └── index.html
+      ├── getriebeschaden-ankauf/
+      │   └── index.html
+      ├── gebrauchtwagen-ankauf/
+      │   └── index.html
+      ├── luxusauto-ankauf/
+      │   └── index.html
+      ├── firmenwagen-ankauf/
+      │   └── index.html
+      ├── auto-export-deutschland/
+      │   └── index.html
+      ├── auto-export-afrika/
+      │   └── index.html
+      ├── auto-export-osteuropa/
+      │   └── index.html
+      ├── mercedes-export/
+      │   └── index.html
+      ├── bmw-export/
+      │   └── index.html
+      ├── audi-export/
+      │   └── index.html
+      ├── vw-export/
+      │   └── index.html
+      └── auto-bewertung/
+          └── index.html
+
+  Total HTML files to generate: 22
+
+===============================================================
