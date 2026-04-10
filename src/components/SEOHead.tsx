@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { Head } from 'vite-react-ssg';
 
 interface SEOHeadProps {
   title: string;
@@ -8,66 +9,25 @@ interface SEOHeadProps {
 }
 
 const SEOHead: React.FC<SEOHeadProps> = ({ title, description, keywords, canonical }) => {
-  useEffect(() => {
-    // Update document title
-    document.title = `${title} | Autoexport Schweiz`;
-
-    // Update meta description
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (!metaDesc) {
-      metaDesc = document.createElement('meta');
-      metaDesc.setAttribute('name', 'description');
-      document.head.appendChild(metaDesc);
-    }
-    metaDesc.setAttribute('content', description);
-
-    // Update meta keywords
-    if (keywords && keywords.length > 0) {
-      let metaKeywords = document.querySelector('meta[name="keywords"]');
-      if (!metaKeywords) {
-        metaKeywords = document.createElement('meta');
-        metaKeywords.setAttribute('name', 'keywords');
-        document.head.appendChild(metaKeywords);
-      }
-      metaKeywords.setAttribute('content', keywords.join(', '));
-    }
-
-    // Update canonical
-    if (canonical) {
-      let link = document.querySelector('link[rel="canonical"]');
-      if (!link) {
-        link = document.createElement('link');
-        link.setAttribute('rel', 'canonical');
-        document.head.appendChild(link);
-      }
-      link.setAttribute('href', canonical);
-    }
-
-    // Open Graph
-    const ogTags: Record<string, string> = {
-      'og:title': title,
-      'og:description': description,
-      'og:type': 'website',
-      'og:locale': 'de_CH',
-      'og:site_name': 'Autoexport Schweiz',
-    };
-
-    Object.entries(ogTags).forEach(([property, content]) => {
-      let meta = document.querySelector(`meta[property="${property}"]`);
-      if (!meta) {
-        meta = document.createElement('meta');
-        meta.setAttribute('property', property);
-        document.head.appendChild(meta);
-      }
-      meta.setAttribute('content', content);
-    });
-
-    return () => {
-      document.title = 'Autoexport Schweiz | Auto verkaufen zum besten Preis';
-    };
-  }, [title, description, keywords, canonical]);
-
-  return null;
+  const fullTitle = `${title} | Autoexport Schweiz`;
+  
+  return (
+    <Head>
+      <title>{fullTitle}</title>
+      <meta name="description" content={description} />
+      {keywords && keywords.length > 0 && (
+        <meta name="keywords" content={keywords.join(', ')} />
+      )}
+      {canonical && <link rel="canonical" href={canonical} />}
+      
+      {/* Open Graph */}
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:type" content="website" />
+      <meta property="og:locale" content="de_CH" />
+      <meta property="og:site_name" content="Autoexport Schweiz" />
+    </Head>
+  );
 };
 
 export default SEOHead;
