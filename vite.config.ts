@@ -43,7 +43,7 @@ export default defineConfig({
     },
   },
   ssgOptions: {
-    script: 'async',
+    script: 'defer',
     formatting: 'minify',
     // Output /route/index.html instead of /route.html
     // Gives clean URLs on GitHub Pages (no .html extension needed)
