@@ -47,7 +47,7 @@ export default defineConfig({
     formatting: 'minify',
     // Output /route/index.html instead of /route.html
     // Gives clean URLs on GitHub Pages (no .html extension needed)
-    dirStyle: 'directory',
+    dirStyle: 'nested',
     /**
      * Expand dynamic route parameters into concrete URLs.
      * vite-react-ssg calls this with the list of route paths it detects,

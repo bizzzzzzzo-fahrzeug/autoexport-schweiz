@@ -14,6 +14,6 @@ import './index.css';
 export const createRoot = ViteReactSSG(
   { 
     routes,
-    basename: import.meta.env.BASE_URL?.replace(/\/$/, '') || '/'
+    basename: import.meta.env.BASE_URL,
   }
 );
