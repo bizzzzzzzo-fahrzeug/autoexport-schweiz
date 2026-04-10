@@ -12,7 +12,8 @@ import './index.css';
  * by vite-react-ssg depending on the environment (client vs. SSG build).
  */
 export const createRoot = ViteReactSSG(
-  { routes },
-  undefined, // fn hook
-  { basename: import.meta.env.BASE_URL }
+  { 
+    routes,
+    basename: import.meta.env.BASE_URL?.replace(/\/$/, '') || '/'
+  }
 );
