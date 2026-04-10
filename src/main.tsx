@@ -11,4 +11,8 @@ import './index.css';
  * The router (BrowserRouter / StaticRouter) is injected automatically
  * by vite-react-ssg depending on the environment (client vs. SSG build).
  */
-export const createRoot = ViteReactSSG({ routes });
+export const createRoot = ViteReactSSG(
+  { routes },
+  undefined, // fn hook
+  { basename: import.meta.env.BASE_URL }
+);
